@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0b0b;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* ===== CONTROLE ===== */
+.controls {
+    padding: 12px;
+}
+
+.controls .btn {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(135deg, #c40000, #000);
+    padding: 10px 16px;
+    border-radius: 8px;
+}
+
+/* ===== GALERIA ===== */
+.fotos {
+    width: 100%;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: #111;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 0 18px rgba(196, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+}
+
+/* ===== BOTÃO ===== */
+.card button {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    background: linear-gradient(135deg, #c40000, #000);
+    color: #fff;
+}
+
+/* ===== CELULARES MAIORES ===== */
+@media (min-width: 480px) {
+    .fotos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== TABLETS ===== */
+@media (min-width: 768px) {
+    .fotos {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .controls {
+        padding: 20px;
+    }
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 1024px) {
+    .fotos {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1300px;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+        transition: 0.3s;
+    }
+}
