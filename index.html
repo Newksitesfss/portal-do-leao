@@ -791,7 +791,11 @@ const instaPopup = document.getElementById("instaPopup");
 const closePopup = document.getElementById("closePopup");
 
 function showPopup() {
-  instaPopup.classList.add("active");
+  // Verifica se o popup já foi mostrado nesta sessão
+  if (!sessionStorage.getItem("instaPopupShown")) {
+    instaPopup.classList.add("active");
+    sessionStorage.setItem("instaPopupShown", "true");
+  }
 }
 
 function hidePopup() {
