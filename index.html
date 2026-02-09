@@ -623,8 +623,8 @@
 <body>
     <!-- VIDEO DE ABERTURA -->
     <div class="video-overlay" id="videoOverlay">
-        <video autoplay muted id="introVideo">
-            <source src="WhatsApp Video 2026-02-09 at 15.26.07.mp4" type="video/mp4">
+        <video autoplay muted playsinline id="introVideo">
+            <source src="intro.mp4" type="video/mp4">
             Seu navegador não suporta vídeos HTML5.
         </video>
         <button class="skip-video-btn" id="skipBtn" title="Pular vídeo">✕</button>
@@ -812,6 +812,19 @@ function hideVideoAndShowContent() {
 
 introVideo.addEventListener("ended", hideVideoAndShowContent);
 skipBtn.addEventListener("click", hideVideoAndShowContent);
+
+// Forçar o play no vídeo (necessário para alguns navegadores mobile)
+window.addEventListener('load', () => {
+    const playPromise = introVideo.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.log("Autoplay bloqueado ou erro ao carregar vídeo:", error);
+            // Se o autoplay falhar, podemos mostrar o conteúdo ou um botão de play
+            // Por segurança, se não carregar em 3 segundos, pula o vídeo
+            setTimeout(hideVideoAndShowContent, 3000);
+        });
+    }
+});
 
     </script>
 </body>
